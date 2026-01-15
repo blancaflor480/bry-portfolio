@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bry-portfolio/static/css/main.635c8cdb.css",
-    "main.js": "/bry-portfolio/static/js/main.fa6ebcd4.js",
+    "main.css": "/bry-portfolio/static/css/main.f60da383.css",
+    "main.js": "/bry-portfolio/static/js/main.305b9151.js",
     "static/js/453.46b167dc.chunk.js": "/bry-portfolio/static/js/453.46b167dc.chunk.js",
     "index.html": "/bry-portfolio/index.html",
-    "main.635c8cdb.css.map": "/bry-portfolio/static/css/main.635c8cdb.css.map",
-    "main.fa6ebcd4.js.map": "/bry-portfolio/static/js/main.fa6ebcd4.js.map",
+    "main.f60da383.css.map": "/bry-portfolio/static/css/main.f60da383.css.map",
+    "main.305b9151.js.map": "/bry-portfolio/static/js/main.305b9151.js.map",
     "453.46b167dc.chunk.js.map": "/bry-portfolio/static/js/453.46b167dc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.635c8cdb.css",
-    "static/js/main.fa6ebcd4.js"
+    "static/css/main.f60da383.css",
+    "static/js/main.305b9151.js"
   ]
 }
