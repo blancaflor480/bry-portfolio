@@ -46,8 +46,8 @@ export default function ContactSection({ darkMode }) {
     ];
 
     const socialLinks = [
-        { icon: Github, label: "GitHub", href: "#" },
-        { icon: Briefcase, label: "Indeed", href: "#" },
+        { icon: Github, label: "GitHub", href: "https://github.com/blancaflor480" },
+        { icon: Briefcase, label: "LinkedIn", href: "https://www.linkedin.com/in/jade-ryan-blancaflor-498485346" },
         { icon: Facebook, label: "Facebook", href: "#" }
     ];
 

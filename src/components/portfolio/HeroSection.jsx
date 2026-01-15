@@ -47,25 +47,7 @@ export default function HeroSection({ darkMode }) {
                             : 'bg-gradient-to-tr from-blue-300/25 to-blue-500/15'
                     }`}
                 />
-                {darkMode && (
-                    <>
-                        <motion.div
-                            animate={{ opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 4, repeat: Infinity }}
-                            className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full"
-                        />
-                        <motion.div
-                            animate={{ opacity: [0.2, 0.5, 0.2] }}
-                            transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                            className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full"
-                        />
-                        <motion.div
-                            animate={{ opacity: [0.4, 0.7, 0.4] }}
-                            transition={{ duration: 5, repeat: Infinity, delay: 2 }}
-                            className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-white rounded-full"
-                        />
-                    </>
-                )}
+
             </div>
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">

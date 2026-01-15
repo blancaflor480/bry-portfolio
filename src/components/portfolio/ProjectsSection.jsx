@@ -5,6 +5,22 @@ import { ExternalLink, Github, Folder } from 'lucide-react';
 export default function ProjectsSection({ darkMode }) {
     const projects = [
         {
+            title: "Matlex Philippines",
+            description: "Company website contribution as Web Development Lead at Matlex. Built and maintained the official company website.",
+            tech: ["WordPress", "Yoast SEO", "Hostinger", "Cloudflare"],
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+            link: "https://matlexphilippines.com/",
+            isExternal: true
+        },
+        {
+            title: "Matlex Builders",
+            description: "Company website contribution as Web Development Lead at Matlex. Developed and managed the builders division website.",
+            tech: ["WordPress", "Yoast SEO", "Hostinger", "Cloudflare"],
+            image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
+            link: "https://matlexbuilders.com/",
+            isExternal: true
+        },
+        {
             title: "Kbid-App",
             description: "Capstone Project of Mobile Application for church",
             tech: ["Android Studio", "Java", "SQLite", "Firebase"],
@@ -164,9 +180,9 @@ export default function ProjectsSection({ darkMode }) {
                                     ))}
                                 </div>
 
-                                {/* GitHub Link */}
+                                {/* Link */}
                                 <motion.a
-                                    href={project.github}
+                                    href={project.isExternal ? project.link : project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.02 }}
@@ -178,8 +194,8 @@ export default function ProjectsSection({ darkMode }) {
                                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                                 >
-                                    <Github size={16} />
-                                    View on GitHub
+                                    {project.isExternal ? <ExternalLink size={16} /> : <Github size={16} />}
+                                    {project.isExternal ? 'View Website' : 'View on GitHub'}
                                 </motion.a>
                             </div>
                         </motion.div>
