@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/bry-portfolio/static/css/main.f60da383.css",
-    "main.js": "/bry-portfolio/static/js/main.305b9151.js",
+    "main.css": "/bry-portfolio/static/css/main.5db0c516.css",
+    "main.js": "/bry-portfolio/static/js/main.db33982b.js",
     "static/js/453.46b167dc.chunk.js": "/bry-portfolio/static/js/453.46b167dc.chunk.js",
+    "static/media/matlexphilippines.png": "/bry-portfolio/static/media/matlexphilippines.3d62def9e38b49e03496.png",
+    "static/media/matlexbuilders.png": "/bry-portfolio/static/media/matlexbuilders.1a66acd346e99c275912.png",
+    "static/media/Personal image.jpg": "/bry-portfolio/static/media/Personal image.451b6a324fd513437559.jpg",
     "index.html": "/bry-portfolio/index.html",
-    "main.f60da383.css.map": "/bry-portfolio/static/css/main.f60da383.css.map",
-    "main.305b9151.js.map": "/bry-portfolio/static/js/main.305b9151.js.map",
+    "main.5db0c516.css.map": "/bry-portfolio/static/css/main.5db0c516.css.map",
+    "main.db33982b.js.map": "/bry-portfolio/static/js/main.db33982b.js.map",
     "453.46b167dc.chunk.js.map": "/bry-portfolio/static/js/453.46b167dc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f60da383.css",
-    "static/js/main.305b9151.js"
+    "static/css/main.5db0c516.css",
+    "static/js/main.db33982b.js"
   ]
 }
