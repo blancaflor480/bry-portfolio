@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Target, TrendingUp, BookOpen, User } from 'lucide-react';
+import { Shield, Target, TrendingUp, BookOpen, Download, ArrowRight } from 'lucide-react';
+import personalImage from '../../Images/Personal image.jpg';
 
 export default function AboutSection({ darkMode }) {
     const coreValues = [
@@ -51,31 +52,49 @@ export default function AboutSection({ darkMode }) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="relative"
+                        className="relative group max-w-md mx-auto lg:mx-0"
                     >
-                        <div className={`relative rounded-3xl overflow-hidden aspect-square max-w-md mx-auto lg:mx-0 ${
+                        {/* Glowing Background Effect */}
+                        <div className={`absolute -inset-1 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition duration-1000 group-hover:duration-200 animate-pulse ${
+                            darkMode
+                                ? 'bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600'
+                                : 'bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400'
+                        }`} />
+
+                        <div className={`relative rounded-3xl overflow-hidden aspect-square ${
                             darkMode 
-                                ? 'bg-gradient-to-br from-blue-600/20 to-blue-800/20' 
-                                : 'bg-gradient-to-br from-blue-100 to-blue-200'
+                                ? 'bg-[#252525] border border-white/10' 
+                                : 'bg-white border border-gray-100'
                         }`}>
                             {/* Profile Image */}
                             <img 
-                                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69637d0940812d1a111575c0/fe57262f9_gradpic.jpg"
+                                src={personalImage}
                                 alt="Bry - Web Developer"
-                                className="w-full h-full object-cover object-top"
+                                className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
                             />
-                            {/* Decorative Elements */}
-                            <div className={`absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl ${
-                                darkMode 
-                                    ? 'bg-blue-500/20' 
-                                    : 'bg-gradient-to-br from-blue-400 to-blue-600'
-                            } -z-10`} />
-                            <div className={`absolute -top-6 -left-6 w-24 h-24 rounded-2xl ${
-                                darkMode 
-                                    ? 'border-2 border-blue-500/30' 
-                                    : 'border-2 border-blue-300'
-                            }`} />
+
+                            {/* Floating "Available for Work" Badge */}
+                            <div className={`absolute bottom-4 left-4 right-4 backdrop-blur-md px-4 py-2.5 rounded-2xl flex items-center gap-3 border shadow-lg ${
+                                darkMode
+                                    ? 'bg-black/60 border-white/10 text-white'
+                                    : 'bg-white/80 border-gray-200/50 text-gray-800'
+                            }`}>
+                                <span className="relative flex h-3 w-3">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                                </span>
+                                <span className="text-xs font-semibold tracking-wide uppercase">
+                                    Available for Work
+                                </span>
+                            </div>
                         </div>
+
+                        {/* Decorative background shape */}
+                        <div className={`absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl ${
+                            darkMode 
+                                ? 'bg-blue-500/10' 
+                                : 'bg-blue-500/5'
+                        } -z-10`} />
                     </motion.div>
 
                     {/* Text Side */}
@@ -85,18 +104,30 @@ export default function AboutSection({ darkMode }) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 ${
+                        {/* Pill tags / Badges */}
+                        <div className="flex flex-wrap gap-2.5 mb-6">
+                            <span className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase ${
                                 darkMode 
-                                    ? 'bg-blue-500/20 text-blue-400' 
-                                    : 'bg-blue-100 text-blue-600'
-                            }`}
-                        >
-                            About Me
-                        </motion.span>
+                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
+                                    : 'bg-blue-50 text-blue-600 border border-blue-100'
+                            }`}>
+                                About Me
+                            </span>
+                            <span className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase ${
+                                darkMode 
+                                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                                    : 'bg-emerald-50 text-emerald-600 border border-emerald-100'
+                            }`}>
+                                Web Developer
+                            </span>
+                            <span className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase ${
+                                darkMode 
+                                    ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' 
+                                    : 'bg-purple-50 text-purple-600 border border-purple-100'
+                            }`}>
+                                Security Focused
+                            </span>
+                        </div>
 
                         <h2 
                             className={`text-4xl md:text-5xl font-bold mb-6 ${
@@ -131,6 +162,57 @@ export default function AboutSection({ darkMode }) {
                                 and experiment with innovative interfaces. I believe the best websites are where 
                                 functionality, aesthetics, and security come together.
                             </p>
+                        </div>
+
+                        {/* Interactive Stats Grid */}
+                        <div className={`grid grid-cols-3 gap-4 mt-8 pt-8 border-t ${
+                            darkMode ? 'border-white/10' : 'border-gray-100'
+                        }`}>
+                            {[
+                                { number: "2+", label: "Years Coding" },
+                                { number: "15+", label: "Projects Built" },
+                                { number: "100%", label: "Code Quality" }
+                            ].map((stat, idx) => (
+                                <div key={idx} className="text-left">
+                                    <div className={`text-2xl md:text-3xl font-bold ${
+                                        darkMode ? 'text-blue-400' : 'text-blue-600'
+                                    }`} style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                        {stat.number}
+                                    </div>
+                                    <div className={`text-xs md:text-sm mt-1 font-medium ${
+                                        darkMode ? 'text-gray-400' : 'text-gray-500'
+                                    }`}>
+                                        {stat.label}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Interactive CTA Buttons */}
+                        <div className="flex flex-wrap gap-4 mt-8">
+                            <a 
+                                href="#contact"
+                                className={`group/btn px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg ${
+                                    darkMode 
+                                        ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/25 hover:shadow-blue-500/35' 
+                                        : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/15 hover:shadow-blue-500/25'
+                                }`}
+                            >
+                                Let's Talk
+                                <ArrowRight size={16} className="transform group-hover/btn:translate-x-1 transition-transform duration-200" />
+                            </a>
+                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                            <a 
+                                href="#"
+                                className={`px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 border ${
+                                    darkMode 
+                                        ? 'border-white/10 hover:bg-white/5 text-gray-200' 
+                                        : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                                }`}
+                            >
+                                Download Resume
+                                <Download size={16} />
+                            </a>
                         </div>
                     </motion.div>
                 </div>

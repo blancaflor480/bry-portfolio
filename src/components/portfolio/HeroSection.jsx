@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown, Download, Code2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowDown, Download, Code2, Github, Linkedin, Mail } from 'lucide-react';
 
 export default function HeroSection({ darkMode }) {
     const scrollToProjects = () => {
@@ -9,6 +9,16 @@ export default function HeroSection({ darkMode }) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    const roles = ["Web Developer", "IT Security Officer"];
+    const [roleIndex, setRoleIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 3500);
+        return () => clearInterval(interval);
+    }, [roles.length]);
 
     return (
         <section 
@@ -47,7 +57,45 @@ export default function HeroSection({ darkMode }) {
                             : 'bg-gradient-to-tr from-blue-300/25 to-blue-500/15'
                     }`}
                 />
+            </div>
 
+            {/* Subtle Tech-Grid Background Pattern */}
+            <div className={`absolute inset-0 opacity-[0.04] dark:opacity-[0.07] pointer-events-none z-0 ${
+                darkMode ? 'text-white' : 'text-blue-900'
+            }`}
+            style={{
+                backgroundImage: 'radial-gradient(currentColor 1.5px, transparent 1.5px)',
+                backgroundSize: '32px 32px'
+            }} />
+
+            {/* Floating Social Icons */}
+            <div className="hidden lg:flex flex-col gap-6 absolute left-8 top-1/2 -translate-y-1/2 z-20">
+                {[
+                    { icon: Github, href: "https://github.com/blancaflor480", label: "GitHub" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/jade-ryan-blancaflor-498485346", label: "LinkedIn" },
+                    { icon: Mail, href: "mailto:Blancaflor480@gmail.com", label: "Email" }
+                ].map((social, idx) => (
+                    <motion.a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.15, x: 4 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`p-3 rounded-xl transition-all duration-300 ${
+                            darkMode 
+                                ? 'bg-[#252525]/80 backdrop-blur border border-white/10 text-gray-400 hover:text-blue-400 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/20' 
+                                : 'bg-white/80 backdrop-blur border border-gray-200 text-gray-600 hover:text-blue-600 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10'
+                        }`}
+                        title={social.label}
+                    >
+                        <social.icon size={20} />
+                    </motion.a>
+                ))}
+                {/* Vertical decorative line */}
+                <div className={`w-[1px] h-20 mx-auto ${
+                    darkMode ? 'bg-white/10' : 'bg-gray-200'
+                }`} />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -59,13 +107,18 @@ export default function HeroSection({ darkMode }) {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex justify-center mb-8"
                     >
-                        <div className={`p-4 rounded-2xl ${
-                            darkMode 
-                                ? 'bg-blue-500/20 text-blue-400' 
-                                : 'bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600'
-                        }`}>
-                            <Code2 size={40} />
-                        </div>
+                        <motion.div 
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            whileHover={{ scale: 1.05 }}
+                            className={`group relative p-4 rounded-2xl transition-all duration-300 ${
+                                darkMode 
+                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/30' 
+                                    : 'bg-gradient-to-br from-blue-50 to-blue-100/80 text-blue-600 border border-blue-100 hover:from-blue-100 hover:to-blue-200/80 hover:shadow-lg hover:shadow-blue-500/15'
+                            }`}
+                        >
+                            <Code2 size={40} className="transform group-hover:rotate-12 transition-transform duration-300" />
+                        </motion.div>
                     </motion.div>
 
                     {/* Greeting */}
@@ -82,32 +135,40 @@ export default function HeroSection({ darkMode }) {
                     </motion.p>
 
                     {/* Main Title */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.4 }}
+                    <h1
                         className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${
-                            darkMode 
-                                ? 'text-white' 
-                                : 'bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent'
+                            darkMode ? 'text-white' : 'text-gray-900'
                         }`}
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
-                        I'm a{' '}
-                        <span className={`${
-                            darkMode 
-                                ? 'bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent' 
-                                : 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent'
-                        }`}>
-                            Web Developer
+                        <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="inline-block"
+                        >
+                            I'm a{' '}
+                        </motion.span>
+                        <br className="sm:hidden" />
+                        <span className="relative inline-flex flex-col h-[1.2em] overflow-hidden align-bottom">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={roleIndex}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -30 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    className={`bg-gradient-to-r ${
+                                        darkMode 
+                                            ? 'from-blue-400 via-indigo-400 to-purple-400' 
+                                            : 'from-blue-600 via-indigo-600 to-purple-700'
+                                    } bg-clip-text text-transparent pb-1`}
+                                >
+                                    {roles[roleIndex]}
+                                </motion.span>
+                            </AnimatePresence>
                         </span>
-                        <br />
-                        <span className={`text-3xl md:text-4xl lg:text-5xl ${
-                            darkMode ? 'text-gray-400' : 'text-gray-600'
-                        }`}>
-                            / IT Security
-                        </span>
-                    </motion.h1>
+                    </h1>
 
                     {/* Description */}
                     <motion.p
